@@ -125,22 +125,91 @@
             {}d&d&c&b&a\\
         \end{array}\]}
 
+        On obtient bien deux tableaux différents, ce qui laisse supposer que $(Z/4Z, +, 0)$ n'est pas isomorphe a $(Z/2Z \times Z/2Z, +, 0)$.
+        \pagebreak
         \subsection{Elément neutre}
         \textbf{Question 2 :}
         
         Procédure SageMath :
-        \begin{lstlisting}
-            def test_neutral(t):
-                for i in range(len(t)):
-                    neutral = true
-                    for j in range(len(t)):
-                        if t[i][j] != j or t[j][i] != j:
-                            neutral = false
-                    if neutral == true:
-                        print("element ", i, " is neutral")
-        \end{lstlisting}
-        
 
+        \lstinputlisting[language=Python, firstline=1, lastline=8]{programs.py}
+
+        \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
+            \hline
+            \verb|In|
+            & 
+            \verb|test_neutral(t_C4)|
+            \\
+            \hline
+        \end{tabularx}
+
+        \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
+            \hline
+            \verb|Out|
+            & 
+            \verb|0|
+            \\
+            \hline
+        \end{tabularx}\\
+        
+        La procédure renvoit bien l'indice du premier élément qui correspond à $()$ dans SageMath.\\
+
+        \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
+            \hline
+            \verb|In|
+            & 
+            \verb|test_neutral(t_C2C2)|
+            \\
+            \hline
+        \end{tabularx}
+
+        \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
+            \hline
+            \verb|Out|
+            & 
+            \verb|0|
+            \\
+            \hline
+        \end{tabularx}
+        \newline
+        \newline
+        La procédure renvoit bien l'indice du premier élément qui correspond à $((), ())$ dans SageMath.
+        \newline
+
+        \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
+            \hline
+            \verb|In|
+            & 
+            \verb|t_random = |
+            \\
+            \verb||
+            & 
+            \verb|[0, 2, 1, 3], [1, 3, 0, 1], [2, 1, 3, 0], [3, 1, 2, 0]]|
+            \\
+            \hline
+        \end{tabularx}
+
+        \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
+            \hline
+            \verb|In|
+            & 
+            \verb|test_neutral(t_random)|
+            \\
+            \hline
+        \end{tabularx}
+
+        \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
+            \hline
+            \verb|Out|
+            & 
+            \verb||
+            \\
+            \hline
+        \end{tabularx}
+        \newline
+
+        La procédure ne renvoit rien.
+        \newline
         \subsection{Elément symétrique}
         \textbf{Question 3 :}
         \subsection{Associativité}
