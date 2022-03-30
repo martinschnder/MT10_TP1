@@ -1,0 +1,174 @@
+\documentclass[titlepage]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{listings}
+\usepackage{tabularx}
+
+\title{Rapport MT10 - TP1 : Groupes d’ordre 4}
+\author{Martin Schneider, Océane Bordeau}
+
+\setlength{\parindent}{0pt}
+
+\begin{document}
+    \maketitle
+    \textbf{Question 0 :}
+
+    Définition d'un groupe : Un groupe est un triplet (G, *, e) où M est un ensemble, * une application
+    \[*:G \times G \longrightarrow M\]
+    \[(x, x') \longrightarrow x*x'\]
+    et $e \in G$ tel que : 
+
+    (i) e est un \textbf{élément neutre} : \[(\forall x \in G) \quad x*e=x \quad et \quad e*x=x\]
+    (ii) * est \textbf{associative} : \[(\forall x, x', x'' \in G) \quad (x*x')*x''=x*(x'*x'')\]
+    (iii) Tout élément de G adment un \textbf{symetrique} : \[(\forall x \in G)(\exists y \in G) \quad x*y=e \quad et \quad y*x=e\]
+
+    Définition d'un morphisme de groupe : Soient (G, *, e) et (G', *', e') deux groupes. 
+    Une application de G dans G' est un morphisme de groupe si elle est compatible avec les structures de groupe.
+    \[(\forall x, y \in G) \quad f(x*y)=f(x)*'f(y)\]
+
+    \section{Test d'une loi}
+        \subsection{Codage d'une loi sur un ensemble}
+        \textbf{Question 1 :}
+
+        Groupe $(Z/4Z, +, 0)$
+        \[E = \{\dot{0}, \dot{1}, \dot{2}, \dot{3}\}\]
+
+        \[t=\begin{tabular}{| c || c | c | c | c |}
+            \hline
+            $x$\textbackslash $x'$ & $\dot{0}$ & $\dot{1}$ & $\dot{2}$ & $\dot{3}$ \\ \hline \hline
+            $\dot{0}$ & $\dot{0}$ & $\dot{1}$ & $\dot{2}$ & $\dot{3}$ \\ \hline
+            $\dot{1}$ & $\dot{1}$ & $\dot{2}$ & $\dot{3}$ & $\dot{0}$ \\ \hline
+            $\dot{2}$ & $\dot{2}$ & $\dot{3}$ & $\dot{0}$ & $\dot{1}$ \\ \hline
+            $\dot{3}$ & $\dot{3}$ & $\dot{0}$ & $\dot{1}$ & $\dot{2}$ \\
+            \hline
+        \end{tabular}\]
+
+        Groupe $(Z/2Z \times Z/2Z, +, 0)$
+        \[E = \{(0, 0), (1, 0), (0, 1), (1, 1)\}\]
+  
+        \[t=\begin{tabular}{| c || c | c | c | c |}
+            \hline
+            $x$\textbackslash $x'$ & (0, 0) & (1, 0) & (0, 1) & (1, 1) \\ \hline \hline
+            (0, 0) & (0, 0) & (1, 0) & (0, 1) & (1, 1) \\ \hline
+            (1, 0) & (1, 0) & (0, 0) & (1, 1) & (0, 1) \\ \hline
+            (0, 1) & (0, 1) & (1, 1) & (0, 0) & (1, 0) \\ \hline
+            (1, 1) & (1, 1) & (0, 1) & (1, 0) & (0, 0) \\
+            \hline
+        \end{tabular}\]
+
+        Avec SageMath :
+
+        \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
+            \hline
+            \verb|In|
+            & 
+            \verb|C4 = groups.permutation.Cyclic(4)|
+            \\
+            \hline
+        \end{tabularx}
+            
+        \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
+            \hline
+            \verb|In|
+            & 
+            \verb|t_C4 = C4.cayley_table().table()|
+            \\
+            \hline
+        \end{tabularx}
+
+        {\setlength{\arraycolsep}{2ex}
+        \[\begin{array}{r|*{4}{r}}
+            \multicolumn{1}{c|}{\ast}&a&b&c&d\\\hline
+            {}a&a&b&c&d\\
+            {}b&b&c&d&a\\
+            {}c&c&d&a&b\\
+            {}d&d&a&b&c\\
+        \end{array}\]}
+
+        \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
+            \hline
+            \verb|In|
+            & 
+            \verb|C2 = groups.permutation.Cyclic(2)|
+            \\
+            \hline
+        \end{tabularx}
+
+        \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
+            \hline
+            \verb|In|
+            & 
+            \verb|C2C2 = cartesian\_product([C2, C2])|
+            \\
+            \hline
+        \end{tabularx}
+            
+        \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
+            \hline
+            \verb|In|
+            & 
+            \verb|t_C2C2 = C2C2.cayley_table().table()|
+            \\
+            \hline
+        \end{tabularx}
+
+        {\setlength{\arraycolsep}{2ex}
+        \[\begin{array}{r|*{4}{r}}
+            \multicolumn{1}{c|}{\ast}&a&b&c&d\\\hline
+            {}a&a&b&c&d\\
+            {}b&b&a&d&c\\
+            {}c&c&d&a&b\\
+            {}d&d&c&b&a\\
+        \end{array}\]}
+
+        \subsection{Elément neutre}
+        \textbf{Question 2 :}
+        
+        Procédure SageMath :
+        \begin{lstlisting}
+            def test_neutral(t):
+                for i in range(len(t)):
+                    neutral = true
+                    for j in range(len(t)):
+                        if t[i][j] != j or t[j][i] != j:
+                            neutral = false
+                    if neutral == true:
+                        print("element ", i, " is neutral")
+        \end{lstlisting}
+        
+
+        \subsection{Elément symétrique}
+        \textbf{Question 3 :}
+        \subsection{Associativité}
+        \textbf{Question 4 :}
+    \section{Test d'un morphisme}
+    \textbf{Question 5 :}
+
+    1.
+
+    2.
+
+    3.
+
+    4.
+    \section{Où l’on identifie tous les groupes d’ordre 4}
+    \textbf{Question 6 :}
+
+    Supposons que un élément apparaisse deux fois dans la même ligne ou colonne, on a alors :
+    \[(\exists a, b, c \in E) \quad a*b=a*c \Longrightarrow b = c\]
+    Cela suppose donc deux éléments identiques.
+
+    \textbf{Question 7 :}
+
+    1. La condition sur l'élément neutre est vérifiée par construction, il reste à vérifier les conditions d'associativité et de symétrie.
+
+    2.
+    \section{Recherche et exploration avec SageMath}
+    \textbf{Question 8 :}
+
+    \textbf{Question 9 :}
+
+    \textbf{Question 10 :}
+
+
+\end{document}
