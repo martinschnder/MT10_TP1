@@ -1,6 +1,7 @@
 \documentclass[titlepage]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
+\usepackage{listings}
 \usepackage{tabularx}
 
 \title{Rapport MT10 - TP1 : Groupes d’ordre 4}
@@ -88,6 +89,32 @@
         $C2C2 = cartesian\_product([C2, C2])$
         $T_C2C2 = C2C2.cayley\_table()$
         $T_C2C2.table()$
+        \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
+            \hline
+            \verb|In|
+            & 
+            \verb|C2 = groups.permutation.Cyclic(2)|
+            \\
+            \hline
+        \end{tabularx}
+
+        \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
+            \hline
+            \verb|In|
+            & 
+            \verb|C2C2 = cartesian\_product([C2, C2])|
+            \\
+            \hline
+        \end{tabularx}
+            
+        \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
+            \hline
+            \verb|In|
+            & 
+            \verb|t_C2C2 = C2C2.cayley_table().table()|
+            \\
+            \hline
+        \end{tabularx}
 
         {\setlength{\arraycolsep}{2ex}
         \[\begin{array}{r|*{4}{r}}
@@ -100,6 +127,20 @@
 
         \subsection{Elément neutre}
         \textbf{Question 2 :}
+        
+        Procédure SageMath :
+        \begin{lstlisting}
+            def test_neutral(t):
+                for i in range(len(t)):
+                    neutral = true
+                    for j in range(len(t)):
+                        if t[i][j] != j or t[j][i] != j:
+                            neutral = false
+                    if neutral == true:
+                        print("element ", i, " is neutral")
+        \end{lstlisting}
+        
+
         \subsection{Elément symétrique}
         \textbf{Question 3 :}
         \subsection{Associativité}
