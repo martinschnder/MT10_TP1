@@ -71,7 +71,7 @@
             \hline
             \verb|In|
             & 
-            \verb|tC4 = C4.cayley_table().table()|
+            \verb|t_C4 = C4.cayley_table().table()|
             \\
             \hline
         \end{tabularx}
@@ -85,10 +85,6 @@
             {}d&d&a&b&c\\
         \end{array}\]}
 
-        $C2 = CyclicPermutationGroup(2)$
-        $C2C2 = cartesian\_product([C2, C2])$
-        $T_C2C2 = C2C2.cayley\_table()$
-        $T_C2C2.table()$
         \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
             \hline
             \verb|In|
@@ -150,9 +146,9 @@
             \verb|0|
             \\
             \hline
-        \end{tabularx}\\
+        \end{tabularx} \newline
         
-        La procédure renvoit bien l'indice du premier élément qui correspond à $()$ dans SageMath.\\
+        La procédure renvoit bien l'indice du premier élément qui correspond à $()$ dans SageMath.\newline
 
         \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
             \hline
@@ -170,11 +166,9 @@
             \verb|0|
             \\
             \hline
-        \end{tabularx}
-        \newline
-        \newline
-        La procédure renvoit bien l'indice du premier élément qui correspond à $((), ())$ dans SageMath.
-        \newline
+        \end{tabularx} \newline
+
+        La procédure renvoit bien l'indice du premier élément qui correspond à $((), ())$ dans SageMath. \newline
 
         \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
             \hline
@@ -205,13 +199,67 @@
             \verb||
             \\
             \hline
-        \end{tabularx}
-        \newline
+        \end{tabularx}\newline
 
         La procédure ne renvoit rien.
-        \newline
+        print C4.identity()
+        \pagebreak
         \subsection{Elément symétrique}
         \textbf{Question 3 :}
+
+        Procédure SageMath :
+
+        \lstinputlisting[language=Python, firstline=10, lastline=18]{programs.py}
+
+        \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
+            \hline
+            \verb|In|
+            & 
+            \verb|symetric(t_C4)|
+            \\
+            \hline
+        \end{tabularx}
+
+        \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
+            \hline
+            \verb|Out|
+            & 
+            \verb|(0, 0) (0, 1) (0, 2) (0, 3) (1, 0) (1, 1) (1, 2) (1, 3)|
+            \\
+            \verb||
+            &
+            \verb|(2, 0) (2, 1) (2, 2) (2, 3) (3, 0) (3, 1) (3, 2) (3, 3)|
+            \\
+            \hline
+        \end{tabularx}\newline
+        
+        L'opération $+$ étant commutative, la procédure renvoit tous les couples possibles.\newline
+
+        \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
+            \hline
+            \verb|In|
+            & 
+            \verb|symetric(t_C2C2)|
+            \\
+            \hline
+        \end{tabularx}
+
+        \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
+            \hline
+            \verb|Out|
+            & 
+            \verb|(0, 0) (0, 1) (0, 2) (0, 3) (1, 0) (1, 1) (1, 2) (1, 3)|
+            \\
+            \verb||
+            &
+            \verb|(2, 0) (2, 1) (2, 2) (2, 3) (3, 0) (3, 1) (3, 2) (3, 3)|
+            \\
+            \hline
+        \end{tabularx}\newline
+        
+        De même, on obtient le même résultat avec $(Z/2Z \times Z/2Z, +, 0)$. \newline
+
+
         \subsection{Associativité}
         \textbf{Question 4 :}
     \section{Test d'un morphisme}
