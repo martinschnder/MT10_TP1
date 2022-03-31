@@ -3,6 +3,7 @@
 \usepackage[T1]{fontenc}
 \usepackage{listings}
 \usepackage{tabularx}
+\usepackage{amssymb}
 
 \title{Rapport MT10 - TP1 : Groupes d’ordre 4}
 \author{Martin Schneider, Océane Bordeau}
@@ -13,7 +14,7 @@
     \maketitle
     \textbf{Question 0 :}
 
-    Définition d'un groupe : Un groupe est un triplet (G, *, e) où M est un ensemble, * une application
+    \textbf{\emph{Définition d'un groupe :}} Un groupe est un triplet (G, *, e) où M est un ensemble, * une application
     \[*:G \times G \longrightarrow M\]
     \[(x, x') \longrightarrow x*x'\]
     et $e \in G$ tel que : 
@@ -22,7 +23,7 @@
     (ii) * est \textbf{associative} : \[(\forall x, x', x'' \in G) \quad (x*x')*x''=x*(x'*x'')\]
     (iii) Tout élément de G adment un \textbf{symetrique} : \[(\forall x \in G)(\exists y \in G) \quad x*y=e \quad et \quad y*x=e\]
 
-    Définition d'un morphisme de groupe : Soient (G, *, e) et (G', *', e') deux groupes. 
+    \textbf{\emph{Définition d'un morphisme de groupe :}} Soient (G, *, e) et (G', *', e') deux groupes. 
     Une application de G dans G' est un morphisme de groupe si elle est compatible avec les structures de groupe.
     \[(\forall x, y \in G) \quad f(x*y)=f(x)*'f(y)\]
 
@@ -30,7 +31,7 @@
         \subsection{Codage d'une loi sur un ensemble}
         \textbf{Question 1 :}
 
-        Groupe $(Z/4Z, +, 0)$
+        Groupe $(\mathbb{Z}/4\mathbb{Z}, +, 0)$
         \[E = \{\dot{0}, \dot{1}, \dot{2}, \dot{3}\}\]
 
         \[t=\begin{tabular}{| c || c | c | c | c |}
@@ -43,7 +44,7 @@
             \hline
         \end{tabular}\]
 
-        Groupe $(Z/2Z \times Z/2Z, +, 0)$
+        Groupe $(\mathbb{Z}/2\mathbb{Z} \times \mathbb{Z}/2\mathbb{Z}, +, 0)$
         \[E = \{(0, 0), (1, 0), (0, 1), (1, 1)\}\]
   
         \[t=\begin{tabular}{| c || c | c | c | c |}
@@ -56,7 +57,11 @@
             \hline
         \end{tabular}\]
 
-        Avec SageMath :
+        \textbf{\emph{Avec SageMath}}
+        \vspace*{2mm}
+
+        Groupe $(\mathbb{Z}/4\mathbb{Z}, +, 0)$ :
+        \vspace*{2mm}
 
         \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
             \hline
@@ -66,7 +71,16 @@
             \\
             \hline
         \end{tabularx}
-            
+        
+        \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
+            \hline
+            \verb|In|
+            & 
+            \verb|E4 = C4.cayley_table().column_keys()|
+            \\
+            \hline
+        \end{tabularx}
+
         \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
             \hline
             \verb|In|
@@ -75,16 +89,36 @@
             \\
             \hline
         \end{tabularx}
+        
+        \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
+            \hline
+            \verb|In|
+            & 
+            \verb|print(t_C4)|
+            \\
+            \hline
+        \end{tabularx}
 
-        {\setlength{\arraycolsep}{2ex}
-        \[\begin{array}{r|*{4}{r}}
-            \multicolumn{1}{c|}{\ast}&a&b&c&d\\\hline
-            {}a&a&b&c&d\\
-            {}b&b&c&d&a\\
-            {}c&c&d&a&b\\
-            {}d&d&a&b&c\\
-        \end{array}\]}
+        \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
+            \hline
+            \verb|Out|
+            & 
+            {\setlength{\arraycolsep}{2ex}
+            \[\begin{array}{r|*{4}{r}}
+                \multicolumn{1}{c|}{\ast}&a&b&c&d\\\hline
+                {}a&a&b&c&d\\
+                {}b&b&c&d&a\\
+                {}c&c&d&a&b\\
+                {}d&d&a&b&c\\
+            \end{array}\]}
+            \\
+            \hline
+        \end{tabularx}
 
+        \vspace*{6mm}
+        Groupe $(\mathbb{Z}/2\mathbb{Z} \times \mathbb{Z}/2\mathbb{Z}, +, 0)$ :
+        \vspace*{2mm}
+        
         \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
             \hline
             \verb|In|
@@ -98,11 +132,20 @@
             \hline
             \verb|In|
             & 
-            \verb|C2C2 = cartesian\_product([C2, C2])|
+            \verb|C2C2 = cartesian_product([C2, C2])|
             \\
             \hline
         \end{tabularx}
             
+        \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
+            \hline
+            \verb|In|
+            & 
+            \verb|E2 = C2C2.cayley_table().column_keys()|
+            \\
+            \hline
+        \end{tabularx}
+
         \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
             \hline
             \verb|In|
@@ -112,21 +155,36 @@
             \hline
         \end{tabularx}
 
-        {\setlength{\arraycolsep}{2ex}
-        \[\begin{array}{r|*{4}{r}}
-            \multicolumn{1}{c|}{\ast}&a&b&c&d\\\hline
-            {}a&a&b&c&d\\
-            {}b&b&a&d&c\\
-            {}c&c&d&a&b\\
-            {}d&d&c&b&a\\
-        \end{array}\]}
+        \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
+            \hline
+            \verb|In|
+            & 
+            \verb|print(t_C2C2)|
+            \\
+            \hline
+        \end{tabularx}
 
-        On obtient bien deux tableaux différents, ce qui laisse supposer que $(Z/4Z, +, 0)$ n'est pas isomorphe a $(Z/2Z \times Z/2Z, +, 0)$.
+        \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
+            \hline
+            \verb|Out|
+            & 
+            {\setlength{\arraycolsep}{2ex}
+            \[\begin{array}{r|*{4}{r}}
+                \multicolumn{1}{c|}{\ast}&a&b&c&d\\\hline
+                {}a&a&b&c&d\\
+                {}b&b&a&d&c\\
+                {}c&c&d&a&b\\
+                {}d&d&c&b&a\\
+            \end{array}\]}
+            \\
+            \hline
+        \end{tabularx}
+
         \pagebreak
         \subsection{Elément neutre}
         \textbf{Question 2 :}
         
-        Procédure SageMath :
+        \emph{\textbf{Procédure SageMath :}}
 
         \lstinputlisting[language=Python, firstline=1, lastline=8]{programs.py}
 
@@ -143,12 +201,14 @@
             \hline
             \verb|Out|
             & 
-            \verb|0|
+            \verb|0 est neutre|
             \\
             \hline
-        \end{tabularx} \newline
+        \end{tabularx} 
+        \newline
         
-        La procédure renvoit bien l'indice du premier élément qui correspond à $()$ dans SageMath.\newline
+        La procédure renvoit bien l'indice du premier élément qui correspond à $()$ dans SageMath.
+        \newline
 
         \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
             \hline
@@ -163,7 +223,7 @@
             \hline
             \verb|Out|
             & 
-            \verb|0|
+            \verb|0 est neutre|
             \\
             \hline
         \end{tabularx} \newline
@@ -174,20 +234,11 @@
             \hline
             \verb|In|
             & 
-            \verb|t_random = |
+            \verb|test_neutral(groups.permutation.Cyclic(6)|
             \\
             \verb||
             & 
-            \verb|[0, 2, 1, 3], [1, 3, 0, 1], [2, 1, 3, 0], [3, 1, 2, 0]]|
-            \\
-            \hline
-        \end{tabularx}
-
-        \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
-            \hline
-            \verb|In|
-            & 
-            \verb|test_neutral(t_random)|
+            \verb|.cayley_table().table()|
             \\
             \hline
         \end{tabularx}
@@ -196,26 +247,48 @@
             \hline
             \verb|Out|
             & 
-            \verb||
+            \verb|0 est neutre|
             \\
             \hline
         \end{tabularx}\newline
 
-        La procédure ne renvoit rien.
-        print C4.identity()
-        \pagebreak
-        \subsection{Elément symétrique}
-        \textbf{Question 3 :}
+        La procédure renvoit bien l'indice du premier élément qui correspond à $()$ dans SageMath. \newline
 
-        Procédure SageMath :
-
-        \lstinputlisting[language=Python, firstline=10, lastline=18]{programs.py}
+        Pour les groupes cycliques, SageMath propose une méthode \verb|identity()| qui nous renvoie directement l'élément neutre du groupe.
+        
+        Par exemple pour C2 : \newline
 
         \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
             \hline
             \verb|In|
             & 
-            \verb|symetric(t_C4)|
+            \verb|C2.identity()|
+            \\
+            \hline
+        \end{tabularx}
+
+        \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
+            \hline
+            \verb|Out|
+            & 
+            \verb|()|
+            \\
+            \hline
+        \end{tabularx}
+
+        \pagebreak
+        \subsection{Elément symétrique}
+        \textbf{Question 3 :}
+
+        \emph{\textbf{Procédure SageMath :}}
+
+        \lstinputlisting[language=Python, firstline=10, lastline=16]{programs.py}
+
+        \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
+            \hline
+            \verb|In|
+            & 
+            \verb|symmetric(t_C4)|
             \\
             \hline
         \end{tabularx}
@@ -239,7 +312,7 @@
             \hline
             \verb|In|
             & 
-            \verb|symetric(t_C2C2)|
+            \verb|symmetric(t_C2C2)|
             \\
             \hline
         \end{tabularx}
@@ -257,11 +330,54 @@
             \hline
         \end{tabularx}\newline
         
-        De même, on obtient le même résultat avec $(Z/2Z \times Z/2Z, +, 0)$. \newline
+        De même, on obtient le même résultat avec $(\mathbb{Z}/2\mathbb{Z} \times \mathbb{Z}/2\mathbb{Z}, +, 0)$. \newline
 
 
         \subsection{Associativité}
         \textbf{Question 4 :}
+
+        \emph{\textbf{Procédure SageMath :}}
+
+        \lstinputlisting[language=Python, firstline=18, lastline=26]{programs.py}
+
+        \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
+            \hline
+            \verb|In|
+            & 
+            \verb|associative(t_C4)|
+            \\
+            \hline
+        \end{tabularx}
+
+        \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
+            \hline
+            \verb|Out|
+            & 
+            \verb|True|
+            \\
+            \hline
+        \end{tabularx}\newline
+
+        \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
+            \hline
+            \verb|In|
+            & 
+            \verb|associative(t_C2C2)|
+            \\
+            \hline
+        \end{tabularx}
+
+        \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
+            \hline
+            \verb|Out|
+            & 
+            \verb|True|
+            \\
+            \hline
+        \end{tabularx}\newline
+
+        La loi donnée par les tableaux des deux groupes est bien associative, c'est rassurant vu que ce sont deux groupes.
+
     \section{Test d'un morphisme}
     \textbf{Question 5 :}
 

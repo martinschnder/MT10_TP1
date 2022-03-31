@@ -5,9 +5,9 @@ def test_neutral(t):
             if t[i][j] != j or t[j][i] != j:
                 neutral = false
         if neutral == true:
-            return i
+            print(i, 'est neutre')
 
-def symetric(t):
+def symmetric(t):
     for i in range(len(t)):
         sym = false
         for j in range(len(t)):
@@ -15,7 +15,7 @@ def symetric(t):
                 sym = true
                 print((i, j))
 
-def associativity(t):
+def associative(t):
     ass = true
     for i in range(len(t)):
         for j in range(len(t)):
