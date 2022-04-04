@@ -399,13 +399,119 @@
 
     Supposons que un élément apparaisse deux fois dans la même ligne ou colonne, on a alors :
     \[(\exists a, b, c \in E) \quad a*b=a*c \Longrightarrow b = c\]
-    Cela suppose donc deux éléments identiques.
+    Cela suppose donc deux éléments identiques.\newline
 
     \textbf{Question 7 :}
 
-    1. La condition sur l'élément neutre est vérifiée par construction, il reste à vérifier les conditions d'associativité et de symétrie.
+    1. La condition sur l'élément neutre est vérifiée par construction, la symétrie est vérifiée visuellement, il reste à vérifier l'associativité.\newline
+    
+    \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
+        \hline
+        \verb|In|
+        & 
+        \verb|G_I = [[0,1,2,3],[1,0,3,2],[2,3,1,0],[3,2,0,1]]|
+        \\
+        \hline
+    \end{tabularx}\newline
+    \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
+        \hline
+        \verb|In|
+        & 
+        \verb|associativity(G_I)|
+        \\
+        \hline
+    \end{tabularx}\newline
+    \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
+        \hline
+        \verb|Out|
+        & 
+        \verb|True|
+        \\
+        \hline
+    \end{tabularx}\newline\newline
 
-    2.
+    \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
+        \hline
+        \verb|In|
+        & 
+        \verb|G_II = [[0,1,2,3],[1,0,3,2],[2,3,0,1],[3,2,1,0]]|
+        \\
+        \hline
+    \end{tabularx}\newline
+    \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
+        \hline
+        \verb|In|
+        & 
+        \verb|associativity(G_II)|
+        \\
+        \hline
+    \end{tabularx}\newline
+    \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
+        \hline
+        \verb|Out|
+        & 
+        \verb|True|
+        \\
+        \hline
+    \end{tabularx}\newline\newline
+
+    \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
+        \hline
+        \verb|In|
+        & 
+        \verb|G_III = [[0,1,2,3],[1,2,3,0],[2,3,0,1],[3,0,1,2]]|
+        \\
+        \hline
+    \end{tabularx}\newline
+    \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
+        \hline
+        \verb|In|
+        & 
+        \verb|associativity(G_III)|
+        \\
+        \hline
+    \end{tabularx}\newline
+    \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
+        \hline
+        \verb|Out|
+        & 
+        \verb|True|
+        \\
+        \hline
+    \end{tabularx}\newline\newline
+
+    \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
+        \hline
+        \verb|In|
+        & 
+        \verb|G_IV = [[0,1,2,3],[1,3,0,2],[2,0,3,1],[3,2,1,0]]|
+        \\
+        \hline
+    \end{tabularx}\newline
+    \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
+        \hline
+        \verb|In|
+        & 
+        \verb|associativity(G_IV)|
+        \\
+        \hline
+    \end{tabularx}\newline
+    \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
+        \hline
+        \verb|Out|
+        & 
+        \verb|True|
+        \\
+        \hline
+    \end{tabularx}\newline
+
+    Ces 4 tables sont bien des tables de groupes, elles représentent les seules tables de groupes d'ordre 4.\newline
+
+    2. La table (I) est isomorphe à la table (III) par la permutation entre $\textrm{a}_\textrm{1}$ et $\textrm{a}_\textrm{2}$. 
+    La table (IV) est isomophe à la table (III) par permutation entre $\textrm{a}_\textrm{2}$ et $\textrm{a}_\textrm{3}$.
+    La table (III) est la même table que $(\mathbb{Z}/4\mathbb{Z}, +, 0)$, ainsi les tables (I), (III), (IV) sont isomorphes à $(\mathbb{Z}/4\mathbb{Z}, +, 0)$.\newline
+
+    La table (II) est la même table que $(\mathbb{Z}/2\mathbb{Z} \times \mathbb{Z}/2\mathbb{Z}, +, 0)$, la table (II) est donc isomorphe à $(\mathbb{Z}/2\mathbb{Z} \times \mathbb{Z}/2\mathbb{Z}, +, 0)$.
     \section{Recherche et exploration avec SageMath}
     \textbf{Question 8 :}
 
