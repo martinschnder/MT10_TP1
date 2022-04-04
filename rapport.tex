@@ -4,6 +4,8 @@
 \usepackage{listings}
 \usepackage{tabularx}
 \usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{caption}
 
 \title{Rapport MT10 - TP1 : Groupes d’ordre 4}
 \author{Martin Schneider, Océane Bordeau}
@@ -12,6 +14,8 @@
 
 \begin{document}
     \maketitle
+    \tableofcontents
+    \pagebreak
     \textbf{Question 0 :}
 
     \textbf{\emph{Définition d'un groupe :}} Un groupe est un triplet (G, *, e) où M est un ensemble, * une application
@@ -381,7 +385,9 @@
     \section{Test d'un morphisme}
     \textbf{Question 5 :}
 
-    1.
+    1. \emph{\textbf{Procédure SageMath :}}
+
+    \lstinputlisting[language=Python, firstline=28, lastline=35]{programs.py}
 
     2.
 
@@ -403,9 +409,204 @@
     \section{Recherche et exploration avec SageMath}
     \textbf{Question 8 :}
 
+    Un théorème de Lagrange affirme que l’ordre d’un sous-groupe divise l’ordre du groupe.
+
+    Testons cette affirmation sur différents groupes à l'iade d'une procédure Sagemath : 
+
+    \lstinputlisting[language=Python, firstline=37, lastline=42]{programs.py}
+
+    Cette porcédure va générer l'ensemble des sous groupes générés par les éléments de G.
+    Elle renvoit true seulement si l'ensemble des ordres de sous groupes divise l'orde de G.
+
+    Essayons sur les groupes cycliques :
+
+    \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
+        \hline
+        \verb|In|
+        & 
+        \verb|lagrange(CyclicPermutationGroup(32))|
+        \\
+        \hline
+    \end{tabularx}\newline
+    \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
+        \hline
+        \verb|Out|
+        & 
+        \verb|True|
+        \\
+        \hline
+    \end{tabularx}\newline
+
+    Essayons sur les groupes de permutations symetriques : 
+
+    \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
+        \hline
+        \verb|In|
+        & 
+        \verb|lagrange(SymmetricGroup(6))|
+        \\
+        \hline
+    \end{tabularx}\newline
+    \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
+        \hline
+        \verb|Out|
+        & 
+        \verb|True|
+        \\
+        \hline
+    \end{tabularx}\newline
+
+    Le théorème de Lagrange semble bien être vérifié.
+    \newline
+
     \textbf{Question 9 :}
 
+    Un graphe de Cayley est un représentation visuelle d'un groupe. Elle est obtenu en prenant l'ensemble des éléments du groupe et l'ensemble de ses générateurs.
+    Chaque sommet correspond à un élément du groupe et on associe à chaque générateur un couleur d'arc. Si $g$ et $h$ deux éléments sont reliés par un arc $s$, alors $h = gs$.
+
+    La table d'opération d'un groupe est plus exhaustive mais permet de construire elle aussi le graphe de Cayley associé au groupe.
+
+    Dans SageMath la génération d'un graphe de Cayley est fourni grâce à la méthode $cayley\_graph()$.
+
+    \begin{center}
+        \includegraphics[scale=0.5]{q91.png}
+        \captionof{figure}{Graphe de Cayley du groupe $(\mathbb{Z}/4\mathbb{Z}, +, 0)$}
+    \end{center}
+
+    \begin{center}
+        \includegraphics[scale=0.5]{q92.png}
+        \captionof{figure}{Graphe de Cayley du groupe $(\mathbb{Z}/2\mathbb{Z}\times\mathbb{Z}/2\mathbb{Z}, +, 0)$}
+    \end{center}
+
     \textbf{Question 10 :}
+
+    \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
+        \hline
+        \verb|In|
+        & 
+        \verb|NOT_CNOT = PermutationGroup(['(1, 3)(2, 4)', '(3, 4)'])|
+        \\
+        \hline
+    \end{tabularx}\newline
+    \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
+        \hline
+        \verb|In|
+        & 
+        \verb|NOT_CNOT.order()|
+        \\
+        \hline
+    \end{tabularx}\newline
+    \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
+        \hline
+        \verb|Out|
+        & 
+        \verb|8|
+        \\
+        \hline
+    \end{tabularx}\newline
+    
+    \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
+        \hline
+        \verb|In|
+        & 
+        \verb|SAWP_CNOT = PermutationGroup(['(2, 3)', '(3, 4)'])|
+        \\
+        \hline
+    \end{tabularx}\newline
+    \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
+        \hline
+        \verb|In|
+        & 
+        \verb|SAWP_CNOT.order()|
+        \\
+        \hline
+    \end{tabularx}\newline
+    \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
+        \hline
+        \verb|Out|
+        & 
+        \verb|6|
+        \\
+        \hline
+    \end{tabularx}\newline
+
+    \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
+        \hline
+        \verb|In|
+        & 
+        \verb|NOT_SWAP = PermutationGroup(['(1, 3)(2, 4)', '(2, 3)'])|
+        \\
+        \hline
+    \end{tabularx}\newline
+    \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
+        \hline
+        \verb|In|
+        & 
+        \verb|NOT_SWAP.order()|
+        \\
+        \hline
+    \end{tabularx}\newline
+    \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
+        \hline
+        \verb|Out|
+        & 
+        \verb|8|
+        \\
+        \hline
+    \end{tabularx}\newline
+
+    \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
+        \hline
+        \verb|In|
+        & 
+        \verb|NOT_CNOT_SWAP = PermutationGroup(['(1, 3)(2, 4)',|
+        \\
+        \verb||
+        &
+        \verb|'(3, 4)','(2, 3)'])|
+        \\
+        \hline
+    \end{tabularx}\newline
+    \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
+        \hline
+        \verb|In|
+        & 
+        \verb|NOT_CNOT_SWAP.order()|
+        \\
+        \hline
+    \end{tabularx}\newline
+    \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
+        \hline
+        \verb|Out|
+        & 
+        \verb|24|
+        \\
+        \hline
+    \end{tabularx}\newline
+
+    \begin{center}
+        \includegraphics[scale=0.5]{q10.png}
+        \captionof{figure}{Graphe de Cayley de $\mathfrak{S}4$ pour le système de générateurs $\{NOT;CNOT;SWAP\}$}
+    \end{center}
+
+    \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
+        \hline
+        \verb|In|
+        & 
+        \verb|NOT_CNOT_SWAP.cayley_graph().is_planar()|
+        \\
+        \hline
+    \end{tabularx}\newline
+    \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
+        \hline
+        \verb|out|
+        & 
+        \verb|False|
+        \\
+        \hline
+    \end{tabularx}\newline
+
+    En effet, ce graphe possède 24 noeuds. D'après la formule d'Euler, il doit contenir au plus $3*24-6$ arrêtes soit 66 arrêtes. Or ce dernier en contient 72. Il ne peut donc pas être planaire.
 
 
 \end{document}

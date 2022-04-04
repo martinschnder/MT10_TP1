@@ -34,3 +34,10 @@ def morphisme(f, t1, t2):
                     break
     return morp
 
+def lagrange(G):
+    for i in G.list():
+        H = G.subgroup([i])
+        if (G.order() % H.order() != 0):
+            return false
+    return true
+
