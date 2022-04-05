@@ -389,10 +389,14 @@
 
     \lstinputlisting[language=Python, firstline=28, lastline=35]{programs.py}
 
-    2.
+    2.\newline
 
-    3.
-
+    3. Le groupe $(\mathbb{Z}/4\mathbb{Z}, +, 0)$ a un élément d'ordre 4.\newline
+    
+    En revanche tout élément $x \in (\mathbb{Z}/2\mathbb{Z} \times \mathbb{Z}/2\mathbb{Z}, +, 0)$ vérifie $x^{ppcm(2,2)} = 1$ et a donc comme ordre un diviseur de $ppcm(2,2)$ soit $1$ ou $2$.\newline
+    
+    Ainsi les ordres des éléments du groupe $(\mathbb{Z}/2\mathbb{Z} \times \mathbb{Z}/2\mathbb{Z}, +, 0)$ sont inférieurs à 4, $(\mathbb{Z}/2\mathbb{Z} \times \mathbb{Z}/2\mathbb{Z}, +, 0)$ et $(\mathbb{Z}/4\mathbb{Z}, +, 0)$ ne sont donc pas isomorphes.\newline
+    
     4.
     \section{Où l’on identifie tous les groupes d’ordre 4}
     \textbf{Question 6 :}
@@ -403,7 +407,7 @@
 
     \textbf{Question 7 :}
 
-    1. La condition sur l'élément neutre est vérifiée par construction, la symétrie est vérifiée visuellement, il reste à vérifier l'associativité.\newline
+    1. La condition sur l'élément neutre est vérifiée par construction, la symétrie est aussi vérifiée, il reste à vérifier l'associativité.\newline
     
     \begin{tabularx}{11.5cm}{|p{0.60cm}|X|}
         \hline
@@ -505,13 +509,53 @@
         \hline
     \end{tabularx}\newline
 
-    Ces 4 tables sont bien des tables de groupes, elles représentent les seules tables de groupes d'ordre 4.\newline
+    Ces 4 tables sont bien des tables de groupes.\newline
 
-    2. La table (I) est isomorphe à la table (III) par la permutation entre $\textrm{a}_\textrm{1}$ et $\textrm{a}_\textrm{2}$. 
-    La table (IV) est isomophe à la table (III) par permutation entre $\textrm{a}_\textrm{2}$ et $\textrm{a}_\textrm{3}$.
-    La table (III) est la même table que $(\mathbb{Z}/4\mathbb{Z}, +, 0)$, ainsi les tables (I), (III), (IV) sont isomorphes à $(\mathbb{Z}/4\mathbb{Z}, +, 0)$.\newline
+    Nous allons vérifier par la construction que ce sont les seules possibles.
+    
+    Pour déterminer les tables des groupes d'ordre 4, notons $G = \{a_0, a_1, a_2, a_3\}$ un groupe d'ordre 4 de neutre $a_0$.
+    Deux cas se présentent alors à nous :\newline
 
-    La table (II) est la même table que $(\mathbb{Z}/2\mathbb{Z} \times \mathbb{Z}/2\mathbb{Z}, +, 0)$, la table (II) est donc isomorphe à $(\mathbb{Z}/2\mathbb{Z} \times \mathbb{Z}/2\mathbb{Z}, +, 0)$.
+    \textbf{Premier cas:} $G$ contient un élément d'ordre 4.\newline
+    
+    Supposons que ce soit $a_1$. Alors G doit contenir $a_1^2$ et $a_1^3 = a_1^{-1}$ distincts de $a_1$.
+    
+    On a donc $a_2 = a_1^2$ et $a_3 = a_1^3$. La table de G est donc la table $(III)$.
+    
+    Ou bien $a_3 = a_1^2$ et $a_2 = a_1^3$. La table de G est donc la table $(IV)$.\newline
+
+    Supposons que ce soit $a_2$. Alors G doit contenir $a_2^2$ et $a_2^3 = a_2^{-1}$ distincts de $a_2$.
+    
+    On a donc $a_1 = a_2^2$ et $a_3 = a_2^3$. La table de G est donc la table $(I)$.
+    
+    Ou bien $a_3 = a_2^2$ et $a_1 = a_2^3$. La table de G est donc la table $(IV)$.\newline
+
+    Supposons que ce soit $a_3$. Alors G doit contenir $a_3^2$ et $a_3^3 = a_3^{-1}$ distincts de $a_2$.
+    
+    On a donc $a_1 = a_3^2$ et $a_2 = a_3^3$. La table de G est donc la table $(I)$.
+    
+    Ou bien $a_2 = a_3^2$ et $a_1 = a_3^3$. La table de G est donc la table $(III)$.\newline
+
+    \textbf{Second cas:} $G$ ne contient pas d'élément d'ordre 4. \newline
+    
+    Comme $a_0$ est le seul élément d'ordre 1, 
+    et que $G$ ne peut pas contenir d'éléments d'ordre 3 selon le théorème de Lagrange. 
+    On a donc $a_1, a_2, a_3$ d'ordre 2.
+    Donc $a_1^2 = a_2^2 = a_3^2 = a_0$, et chacun des trois est donc son propre inverse.\newline
+    
+    Si l'on considère maintenant le produit $a_1a_2$. Si l'on avait $a_1a_2 = a_1$, on aurait $a_2 = a_0$, ce qui est exclu.
+    Si l'on avait $a_1a_2 = a_2$, on aurait $a_1 = a_0$, ce qui est exclu. Si l'on avait $a_1a_2 = a_0$, on aurait $a_2 = a_1^{-1}$, donc $a_1 = a_2$ ce qui est exclu.\newline
+    
+    On a alors $a_1a_2 = a_3$. De même pour les autres : on a forcément $a_1a_3 = a_2$, $a_2a_3 = a_1$.
+    On obtient bien la table $(II)$.\newline
+
+    Par construction, ces quatre tables sont bien les seules tables des groupes d'ordre 4.\newline
+
+    2. La table $(I)$ est isomorphe à la table $(III)$ par la permutation entre $a_1$ et $a_2$. 
+    La table $(IV)$ est isomophe à la table $(III)$ par permutation entre $a_2$ et $a_3$.
+    La table $(III)$ est la même table que $(\mathbb{Z}/4\mathbb{Z}, +, 0)$, ainsi les tables (I), (III), (IV) sont isomorphes à $(\mathbb{Z}/4\mathbb{Z}, +, 0)$.\newline
+
+    La table $(II)$ est la même table que $(\mathbb{Z}/2\mathbb{Z} \times \mathbb{Z}/2\mathbb{Z}, +, 0)$, la table (II) est donc isomorphe à $(\mathbb{Z}/2\mathbb{Z} \times \mathbb{Z}/2\mathbb{Z}, +, 0)$.
     \section{Recherche et exploration avec SageMath}
     \textbf{Question 8 :}
 
