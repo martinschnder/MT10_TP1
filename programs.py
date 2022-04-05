@@ -25,14 +25,12 @@ def associative(t):
                     break
     return ass
 
-def morphisme(f, t1, t2):
-    morp = true
+def is_morphisme(f, t1, t2):
     for i in range(len(t1)):
         for j in range(len(t1)):
                 if f[t1[i][j]] != t2[f[i]][f[j]]:
-                    morp = false
-                    break
-    return morp
+                    return false
+    return true
 
 def lagrange(G):
     for i in G.list():
@@ -40,4 +38,23 @@ def lagrange(G):
         if (G.order() % H.order() != 0):
             return false
     return true
+
+def is_bijection(f):
+    for i, value in enumerate(f):
+        for j, value2 in enumerate(f):
+            if (j != i):
+                if value == value2:
+                    return false
+    return true
+
+def all_applications():
+    aplications = []
+    for a in range(4):
+        for b in range(4):
+                for c in range(4):
+                        for d in range(4):
+                            result.append([a, b, c, d])
+    return aplications
+
+
 
