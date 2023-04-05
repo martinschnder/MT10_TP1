@@ -2,6 +2,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{listings}
+\usepackage{xcolor}
 \usepackage{tabularx}
 \usepackage{amssymb}
 \usepackage{graphicx}
@@ -9,8 +10,32 @@
 
 \title{Rapport MT10 - TP1 : Groupes d’ordre 4}
 \author{Martin Schneider, Océane Bordeau}
+\date{5 avril 2022}
 
 \setlength{\parindent}{0pt}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{codeblue}{rgb}{0,0,255}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{ 
+    commentstyle=\color{magenta},
+    keywordstyle=\color{codeblue},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
 
 \begin{document}
     \maketitle
@@ -469,7 +494,7 @@
     
     Ainsi les ordres des éléments du groupe $(\mathbb{Z}/2\mathbb{Z} \times \mathbb{Z}/2\mathbb{Z}, +, 0)$ sont inférieurs à 4, $(\mathbb{Z}/2\mathbb{Z} \times \mathbb{Z}/2\mathbb{Z}, +, 0)$ et $(\mathbb{Z}/4\mathbb{Z}, +, 0)$ ne sont donc pas isomorphes.\newline
     
-    4.
+    4. \textbf{\emph{Avec SageMath}}
     \newline
 
 
@@ -664,7 +689,7 @@
 
     \lstinputlisting[language=Python, firstline=35, lastline=40]{programs.py}
 
-    Cette porcédure va générer l'ensemble des sous groupes générés par les éléments de G.
+    Cette procédure va générer l'ensemble des sous groupes générés par les éléments de G.
     Elle renvoie $True$ seulement si l'ordre de chaque sous-groupe ainsi généré divise l'orde de G.
     \newline
 
@@ -712,7 +737,7 @@
     \textbf{Question 9 :}
 
     Un graphe de Cayley est une représentation visuelle d'un groupe. Elle est obtenue en prenant l'ensemble des éléments du groupe et l'ensemble de ses générateurs.
-    Chaque sommet correspond à un élément du groupe et on associe à chaque générateur un couleur d'arc. Si $g$ et $h$ deux éléments sont reliés par un arc $s$, alors $h = g*s$.
+    Chaque sommet correspond à un élément du groupe et on associe à chaque générateur une couleur d'arc. Si $g$ et $h$ deux éléments sont reliés par un arc $s$, alors $h = g*s$.
 
     La table d'opération d'un groupe est plus exhaustive mais permet de construire elle aussi le graphe de Cayley associé au groupe.
     En effet, elle représente le résultats pour tous les tuples d'éléments (y compris les générateurs).
